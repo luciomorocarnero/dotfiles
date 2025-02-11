@@ -1,0 +1,112 @@
+
+
+# see /usr/share/doc/bash/examples/startup-files (in the package bash-doc)
+# for examples
+
+export PATH="$HOME/.local/bin:$PATH"
+export PATH=$PATH:/usr/local/go/bin
+export PATH="$PATH:$HOME/my_scripts"
+export PATH=$JAVA_HOME/bin:$PATH
+export PATH=$PATH:$ANDROID_HOME/emulator
+export PATH=$PATH:$ANDROID_HOME/platform-tools
+
+export RANGER_LOAD_DEFAULT_RC=FALSE
+export TERM=xterm-kitty
+export JAVA_HOME=/usr/lib/jvm/java-8-openjdk-amd64/
+export RANGER_DEVICONS_SEPARATOR="  "
+export ANDROID_HOME=$HOME/Android/Sdk
+export DEVPOD_CONTAINER_RUNTIME=bin/podman
+
+case $- in
+    *i*) ;;
+      *) return;;
+esac
+PROMPT_DIRTRIM=2
+# don't put duplicate lines or lines starting with space in the history.
+HISTCONTROL=ignoreboth
+shopt -s histappend
+HISTSIZE=1000
+HISTFILESIZE=2000
+shopt -s checkwinsize
+
+[ -x /usr/bin/lesspipe ] && eval "$(SHELL=/bin/sh lesspipe)"
+
+if [ -z "${debian_chroot:-}" ] && [ -r /etc/debian_chroot ]; then
+    debian_chroot=$(cat /etc/debian_chroot)
+fi
+
+# Configuración de colores (modificada para usar secuencias escapadas correctamente)
+Color_Off='\[\033[0m\]'
+Black='\[\033[0;30m\]'
+Red='\[\033[0;31m\]'
+Green='\[\033[0;32m\]'
+Yellow='\[\033[0;33m\]'
+Blue='\[\033[0;34m\]'
+Purple='\[\033[0;35m\]'
+Cyan='\[\033[0;36m\]'
+White='\[\033[0;37m\]'
+On_Yellow='\[\033[43m\]'
+On_Purple='\[\033[45m\]'
+On_Blue='\[\033[44m\]'
+
+# Función para el entorno virtual (simplificada)
+virtual_env() {
+    if [[ -n "$VIRTUAL_ENV" ]]; then
+        echo -e "${Blue}[$(basename "$VIRTUAL_ENV")]${Color_Off} "
+    fi
+}
+
+# Función para la rama de Git (optimizada)
+git_branch() {
+    local branch
+    branch=$(git branch 2>/dev/null | sed -n '/^*/s/* //p')
+    if [ -n "$branch" ]; then
+        echo -e "${Purple}($branch)${Color_Off}"
+    fi
+}
+
+# Prompt principal optimizado
+set_bash_prompt() {
+    local exit_code=$?
+    local virtualenv_info="$(virtual_env)"
+    local git_info="$(git_branch)"
+    
+    PS1="\n${virtualenv_info}"
+    PS1+="${Yellow}\w${Color_Off} "
+    PS1+="${git_info}"
+    
+    if [ $exit_code -ne 0 ]; then
+        PS1+=" ${Red}"
+    else
+        PS1+=" ${Green}"
+    fi
+    
+    PS1+="\$ ${Color_Off}"
+}
+
+PROMPT_COMMAND=set_bash_prompt
+
+# Aliases y configuraciones adicionales
+
+alias ls='ls --color=auto -al '
+alias lsg='ls --color=auto -al | grep '
+# alias ll='ls -alF'
+# alias la='ls -A'
+# alias l='ls -CF'
+alias python='python3'
+alias vim='nvim'
+alias rgr='ranger'
+alias off='poweroff'
+alias gclone="git clone --depth=1"
+alias gpgenc='/home/lucio/my_scripts/encrypt_and_cleanup.sh'
+alias gpgdec='/home/lucio/my_scripts/decrypt_and_cleanup.sh'
+
+# Configuraciones de complementos
+[ -f ~/.fzf.bash ] && source ~/.fzf.bash
+eval "$(zoxide init --cmd cd bash)"
+
+# Variables finales
+export EDITOR=nvim
+export VISUAL=nvim
+. "$HOME/.cargo/env"
+alias dotfiles='/usr/bin/git --git-dir=/home/lucio/.dotfiles/ --work-tree=/home/lucio'
