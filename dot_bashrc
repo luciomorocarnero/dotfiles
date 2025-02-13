@@ -87,9 +87,10 @@ set_bash_prompt() {
 PROMPT_COMMAND=set_bash_prompt
 
 # Aliases y configuraciones adicionales
+eval $(dircolors -b ~/.dircolors)
 
-alias ls='ls --color=auto -al '
-alias lsg='ls --color=auto -al | grep '
+alias ls='ls --color=auto -al --group-directories-first'
+alias lsg='ls --color=auto -al --group-directories-first | grep '
 # alias ll='ls -alF'
 # alias la='ls -A'
 # alias l='ls -CF'

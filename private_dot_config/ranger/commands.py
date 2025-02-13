@@ -11,6 +11,7 @@ from __future__ import absolute_import, division, print_function
 
 # You can import any python module as needed.
 import os
+from typing import override
 
 # You always need to import ranger.api.commands here to get the Command class:
 from ranger.api.commands import Command
@@ -170,4 +171,30 @@ class Default(ColorScheme):
 
 class opencwd(Command):
     def execute(self):
-        self.fm.run('xdg-open .')
+        self.fm.run("xdg-open .")
+
+
+import os
+
+
+class encrypt(Command):
+    def execute(self):
+        if not self.fm.thisfile.is_file:
+            self.fm.notify(
+                "Error: Selecciona un archivo o directorio válido.", bad=True
+            )
+            return
+        os.system(f'gpgenc "{self.fm.thisfile.path}"')
+        self.fm.notify(f"Encriptado completado: {self.fm.thisfile.path}")
+
+
+class decrypt(Command):
+    def execute(self):
+        if not self.fm.thisfile.is_file:
+            self.fm.notify("Error: Selecciona un archivo .gpg válido.", bad=True)
+            return
+        if not self.fm.thisfile.path.endswith(".gpg"):
+            self.fm.notify("Error: El archivo debe tener extensión .gpg.", bad=True)
+            return
+        self.fm.run(f'gpgdec "{self.fm.thisfile.path}"')
+        self.fm.notify(f"Desencriptado completado: {self.fm.thisfile.path}")
