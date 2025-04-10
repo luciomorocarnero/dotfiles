@@ -89,6 +89,11 @@ PROMPT_COMMAND=set_bash_prompt
 # Aliases y configuraciones adicionales
 eval $(dircolors -b ~/.dircolors)
 
+# env
+if [ -f ~/.env ]; then
+  export $(grep -v '^#' ~/.env | xargs)
+fi
+
 alias ls='ls --color=auto -al --group-directories-first'
 alias lsg='ls --color=auto -al --group-directories-first | grep '
 # alias ll='ls -alF'
@@ -101,13 +106,20 @@ alias off='poweroff'
 alias gclone="git clone --depth=1"
 alias gpgenc='/home/lucio/my_scripts/encrypt_and_cleanup.sh'
 alias gpgdec='/home/lucio/my_scripts/decrypt_and_cleanup.sh'
-
+alias vpnjst='sudo openfortivpn -c ./.config/openfortivpn/JST'
 # Configuraciones de complementos
-[ -f ~/.fzf.bash ] && source ~/.fzf.bash
+# [ -f ~/.fzf.bash ] && source ~/.fzf.bash
 eval "$(zoxide init --cmd cd bash)"
+
+source /usr/share/doc/fzf/examples/completion.zsh
+source /usr/share/doc/fzf/examples/key-bindings.bash
 
 # Variables finales
 export EDITOR=nvim
 export VISUAL=nvim
 . "$HOME/.cargo/env"
 alias dotfiles='/usr/bin/git --git-dir=/home/lucio/.dotfiles/ --work-tree=/home/lucio'
+
+export NVM_DIR="$HOME/.nvm"
+[ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"  # This loads nvm
+[ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"  # This loads nvm bash_completion
