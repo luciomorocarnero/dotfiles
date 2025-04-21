@@ -7,6 +7,7 @@ return {
     "hrsh7th/cmp-cmdline",
     "saadparwaiz1/cmp_luasnip",
     "L3MON4D3/LuaSnip",
+    "roginfarrer/cmp-css-variables",
   },
   build = (function()
     if vim.fn.has("win32") == 1 or vim.fn.executable("make") == 0 then
@@ -63,6 +64,7 @@ return {
         { name = "luasnip" },
         { name = "buffer" },
         { name = "path" },
+        { name = "css-variables" },
       }),
       completion = { completeopt = "menu,menuone,noinsert" },
     })

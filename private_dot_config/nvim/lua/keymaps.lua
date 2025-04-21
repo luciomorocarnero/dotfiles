@@ -1,5 +1,5 @@
 -- paste without copy
-vim.api.nvim_set_keymap("v", "p", '"_dP', { noremap = true, silent = true })
+-- vim.api.nvim_set_keymap("v", "p", '"_dP', { noremap = true, silent = true })
 
 vim.keymap.set({"n", "v"}, "H", "^", { desc = "Go to beginning of line" })
 vim.keymap.set({"n", "v"}, "L", "$", { desc = "Go to end of line" })

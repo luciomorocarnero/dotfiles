@@ -99,6 +99,23 @@ return {
     end,
   },
 
+  -- Smouth Scroll
+  -- {
+  --   "karb94/neoscroll.nvim",
+  --   opts = {},
+  -- },
+  {
+    "smjonas/live-command.nvim",
+    -- live-command supports semantic versioning via Git tags
+    -- tag = "2.*",
+    config = function()
+      require("live-command").setup({
+        commands = {
+          Norm = { cmd = "norm" },
+        },
+      })
+    end,
+  },
   -- Extras
   { "tpope/vim-sleuth" },
   { "Bilal2453/luvit-meta", lazy = true },
@@ -113,6 +130,6 @@ return {
   },
   -- Vue Highlight
   {
-    "posva/vim-vue"
-  }
+    "posva/vim-vue",
+  },
 }

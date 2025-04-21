@@ -2,6 +2,9 @@
 vim.g.mapleader = " "
 vim.g.maplocalleader = " "
 
+-- local config
+vim.opt.exrc = true
+
 vim.g.have_nerd_font = true
 
 -- [[ Setting options ]]
@@ -97,3 +100,9 @@ vim.o.foldtext = ""
 vim.opt.foldcolumn = "0"
 vim.opt.fillchars:append({ fold = " " })
 
+vim.filetype.add({
+  extension = {
+    astro = "astro",
+    typst = "typst",
+  },
+})

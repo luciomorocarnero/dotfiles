@@ -10,7 +10,7 @@ return {
     local diagnostic_enabled = true
 
     lint.linters_by_ft = {
-      lua = { "selene" },
+      -- lua = { "selene" },
       python = { "flake8" },
       -- vue = {"eslint"},
       -- typescript = {"eslint_d"},
