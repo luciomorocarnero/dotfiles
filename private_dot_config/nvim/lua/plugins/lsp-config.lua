@@ -77,16 +77,8 @@ return {
             capabilities = lsp_capabilities,
             filetypes = { "astro" },
             settings = {
-              astro = {
-                enableDiagnostics = true,
-                enableCompletion = true,
-                enableHover = true,
-                enableSemanticTokens = true,
-                enableCodeActions = true,
-                enableDocumentSymbols = true,
-                enableDocumentLinks = true,
-                enableFoldingRange = true,
-              },
+              astro = {},
+              init_options = { typescript = {} },
             },
           })
         end,
@@ -116,23 +108,43 @@ return {
           })
         end,
         ["harper_ls"] = function()
-          lspconfig.harper_ls.setup({
-            settings = {
-              ["harper-ls"] = {
-                linters = {
-                  SentenceCapitalization = false,
-                  SpellCheck = false,
-                },
-              },
-            },
-          })
+          -- lspconfig.harper_ls.setup({
+          --   settings = {
+          --     ["harper-ls"] = {
+          --       userDictPath = "~/Documents/dicts/es.txt",
+          --       fileDictPath = "",
+          --       linters = {
+          --         SpellCheck = true,
+          --         SpelledNumbers = false,
+          --         AnA = true,
+          --         SentenceCapitalization = true,
+          --         UnclosedQuotes = true,
+          --         WrongQuotes = false,
+          --         LongSentences = true,
+          --         RepeatedWords = true,
+          --         Spaces = true,
+          --         Matcher = true,
+          --         CorrectNumberSuffix = true,
+          --       },
+          --       codeActions = {
+          --         ForceStable = false,
+          --       },
+          --       markdown = {
+          --         IgnoreLinkTitle = false,
+          --       },
+          --       diagnosticSeverity = "hint",
+          --       isolateEnglish = false,
+          --     },
+          --   },
+          -- })
         end,
         ["tinymist"] = function()
           lspconfig.tinymist.setup({
             capabilities = lsp_capabilities,
+            filetypes = { "typst" },
             settings = {
               formatterMode = "typstyle",
-              exportPdf = "onType",
+              -- exportPdf = "onType",
               semanticTokens = "disable",
             },
           })

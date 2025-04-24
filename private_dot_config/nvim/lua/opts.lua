@@ -6,6 +6,7 @@ vim.g.maplocalleader = " "
 vim.opt.exrc = true
 
 vim.g.have_nerd_font = true
+vim.g.spellfile_URL = 'https://ftp.nluug.nl/vim/runtime/spell'
 
 -- [[ Setting options ]]
 -- See `:help vim.opt`

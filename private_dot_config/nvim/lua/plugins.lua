@@ -12,6 +12,14 @@ return {
       require("kanagawa").load("wave")
     end,
   },
+  -- Lua line (below)
+  {
+    "nvim-lualine/lualine.nvim",
+    dependencies = { "nvim-tree/nvim-web-devicons" },
+    config = function()
+      require("lualine").setup()
+    end,
+  },
 
   -- Centered
   {
