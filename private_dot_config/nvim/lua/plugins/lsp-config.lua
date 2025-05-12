@@ -25,8 +25,9 @@ return {
       require("mason-lspconfig").setup({
         ensure_installed = {
           "lua_ls",
-          "pyright",
+          "basedpyright",
           "astro",
+          "tailwindcss",
           "eslint",
           "ts_ls",
           "volar",
@@ -36,6 +37,7 @@ return {
           "html",
           "harper_ls",
           "tinymist",
+          "clangd",
         },
         automatic_installation = true,
       })
@@ -53,7 +55,7 @@ return {
             settings = {
               Lua = {
                 diagnostics = {
-                  globals = { "vim" },
+                  globals = { "vim", "Snacks" },
                 },
               },
             },
@@ -146,6 +148,25 @@ return {
               formatterMode = "typstyle",
               -- exportPdf = "onType",
               semanticTokens = "disable",
+            },
+          })
+        end,
+        ["basedpyright"] = function()
+          lspconfig.pyright.setup({
+            capabilities = lsp_capabilities,
+            settings = {
+              python = {
+                analysis = {
+                  typeCheckingMode = "basic", -- o "off" si quieres desactivar por completo
+                  stubPath = "typings",
+                  diagnosticSeverityOverrides = {
+                    reportGeneralTypeIssues = "none",
+                    reportAttributeAccessIssue = "none", -- evita el error con `objects`
+                  },
+                  autoSearchPaths = true,
+                  useLibraryCodeForTypes = true,
+                },
+              },
             },
           })
         end,

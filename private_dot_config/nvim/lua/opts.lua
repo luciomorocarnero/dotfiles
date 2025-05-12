@@ -67,7 +67,10 @@ vim.opt.inccommand = "split"
 -- Show which line your cursor is on
 vim.opt.cursorline = true
 
--- Minimal number of screen lines to keep above and below the cursor.
+-- Diagnostics
+vim.diagnostic.config({ virtual_text = true })
+
+-- -- Minimal number of screen lines to keep above and below the cursor.
 vim.opt.scrolloff = 20
 
 -- Highlight when yanking (copying) text

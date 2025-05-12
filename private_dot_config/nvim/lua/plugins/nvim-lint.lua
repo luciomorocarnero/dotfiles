@@ -11,7 +11,7 @@ return {
 
     lint.linters_by_ft = {
       -- lua = { "selene" },
-      python = { "flake8" },
+      -- python = { "flake8" },
       -- vue = {"eslint"},
       -- typescript = {"eslint_d"},
       -- javascript = {"eslint_d"}
@@ -39,13 +39,8 @@ return {
         vim.notify("Linting disabled", vim.log.levels.INFO)
       end
 
-      if diagnostic_enabled then
-        vim.diagnostic.enable()
-        vim.notify("Diagnostics enabled", vim.log.levels.INFO)
-      else
-        vim.diagnostic.disable()
-        vim.notify("Diagnostics disabled", vim.log.levels.INFO)
-      end
+      vim.diagnostic.enable(not vim.diagnostic.is_enabled())
+
     end, { desc = "toggle [l]inting and diagnostics" })
 
     vim.api.nvim_create_user_command("LintInfo", function()

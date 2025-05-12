@@ -25,7 +25,7 @@ return {
           --   ruby = { "standardrb" },
           markdown = { "prettierd", "prettier", stop_after_first = true },
           --   erb = { "htmlbeautifier" },
-          --   html = { "htmlbeautifier" },
+          html = { "djlint" },
           --   bash = { "beautysh" },
           --   proto = { "buf" },
           --   rust = { "rustfmt" },
@@ -49,4 +49,3 @@ return {
     end,
   },
 }
-

@@ -1,7 +1,7 @@
 
 
 # see /usr/share/doc/bash/examples/startup-files (in the package bash-doc)
-# for examples
+# for examples hola
 
 export PATH="$HOME/.local/bin:$PATH"
 export PATH=$PATH:/usr/local/go/bin
@@ -9,6 +9,7 @@ export PATH="$PATH:$HOME/my_scripts"
 export PATH=$JAVA_HOME/bin:$PATH
 export PATH=$PATH:$ANDROID_HOME/emulator
 export PATH=$PATH:$ANDROID_HOME/platform-tools
+export PATH="/opt/nvim-linux-x86_64/bin:$PATH"
 
 export RANGER_LOAD_DEFAULT_RC=FALSE
 export TERM=xterm-kitty
@@ -103,7 +104,7 @@ alias python='python3'
 alias vim='nvim'
 alias rgr='ranger'
 alias off='poweroff'
-alias gclone="git clone --depth=1"
+alias gitclone="git clone --depth=1"
 alias gpgenc='/home/lucio/my_scripts/encrypt_and_cleanup.sh'
 alias gpgdec='/home/lucio/my_scripts/decrypt_and_cleanup.sh'
 alias vpnjst='sudo openfortivpn -c ./.config/openfortivpn/JST'
