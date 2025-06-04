@@ -1,7 +1,6 @@
 -- Save with W
 vim.api.nvim_create_user_command("W", "w", { nargs = 0 })
 
-
 vim.api.nvim_create_autocmd("LspAttach", {
   desc = "LSP actions",
   callback = function(event)
@@ -41,13 +40,33 @@ vim.api.nvim_create_autocmd("LspAttach", {
   end,
 })
 
-vim.api.nvim_create_autocmd({"BufWinLeave"}, {
-  pattern = {"*.*"},
+vim.api.nvim_create_autocmd({ "BufWinLeave" }, {
+  pattern = { "*.*" },
   desc = "save view (folds), when closing file",
   command = "mkview",
 })
-vim.api.nvim_create_autocmd({"BufWinEnter"}, {
-  pattern = {"*.*"},
+vim.api.nvim_create_autocmd({ "BufWinEnter" }, {
+  pattern = { "*.*" },
   desc = "load view (folds), when opening file",
-  command = "silent! loadview"
+  command = "silent! loadview",
 })
+
+vim.api.nvim_create_autocmd("CursorHold", {
+  callback = function()
+    vim.diagnostic.open_float(nil, { focusable = false, source = "if_many", border = "rounded", show_header = true })
+  end,
+})
+
+vim.api.nvim_create_autocmd({ "FileType" }, {
+  pattern = { "txt" },
+  desc = "Set gq format keymap for txt files",
+  callback = function()
+    vim.keymap.set("n", "<leader>cq", "ggVGgq", { desc = "Format file with gq", buffer = true })
+  end,
+})
+
+vim.api.nvim_create_user_command("Focus", function()
+  Snacks.zen()
+  vim.cmd("Pencil")
+  vim.cmd("Limelight")
+end, { nargs = 0 })

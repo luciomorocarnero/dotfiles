@@ -74,6 +74,43 @@ return {
         desc = "Flash Treesitter",
       },
     },
+    specs = {
+      {
+        "folke/snacks.nvim",
+        opts = {
+          picker = {
+            win = {
+              input = {
+                keys = {
+                  ["<a-s>"] = { "flash", mode = { "n", "i" } },
+                  ["s"] = { "flash" },
+                },
+              },
+            },
+            actions = {
+              flash = function(picker)
+                require("flash").jump({
+                  pattern = "^",
+                  label = { after = { 0, 0 } },
+                  search = {
+                    mode = "search",
+                    exclude = {
+                      function(win)
+                        return vim.bo[vim.api.nvim_win_get_buf(win)].filetype ~= "snacks_picker_list"
+                      end,
+                    },
+                  },
+                  action = function(match)
+                    local idx = picker.list:row2idx(match.pos[1])
+                    picker.list:_move(idx, true, true)
+                  end,
+                })
+              end,
+            },
+          },
+        },
+      },
+    },
   },
 
   -- UndoTree
@@ -109,25 +146,6 @@ return {
     end,
   },
 
-  -- Icons Picker
-  {
-    "ziontee113/icon-picker.nvim",
-    config = function()
-      require("icon-picker").setup({ disable_legacy_commands = true })
-
-      local opts = { noremap = true, silent = true, desc = "😀 Pick Emoji" }
-
-      vim.keymap.set("n", "<Leader>ci", "<cmd>IconPickerNormal emoji nerd_font_v3<cr>", opts)
-      -- vim.keymap.set("n", "<Leader><Leader>y", "<cmd>IconPickerYank<cr>", opts) --> Yank the selected icon into register
-      -- vim.keymap.set("i", "<C-i>", "<cmd>IconPickerInsert<cr>", opts)
-    end,
-  },
-
-  -- Smouth Scroll
-  -- {
-  --   "karb94/neoscroll.nvim",
-  --   opts = {},
-  -- },
   {
     "smjonas/live-command.nvim",
     -- live-command supports semantic versioning via Git tags
@@ -141,7 +159,7 @@ return {
     end,
   },
 
-  -- Vim-Signature
+  -- Vim-Signature / Show the marks
   {
     "kshenoy/vim-signature",
   },

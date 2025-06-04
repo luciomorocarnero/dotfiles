@@ -3,20 +3,27 @@
 # see /usr/share/doc/bash/examples/startup-files (in the package bash-doc)
 # for examples hola
 
-export PATH="$HOME/.local/bin:$PATH"
-export PATH=$PATH:/usr/local/go/bin
-export PATH="$PATH:$HOME/my_scripts"
-export PATH=$JAVA_HOME/bin:$PATH
-export PATH=$PATH:$ANDROID_HOME/emulator
-export PATH=$PATH:$ANDROID_HOME/platform-tools
-export PATH="/opt/nvim-linux-x86_64/bin:$PATH"
+# ====== PATH Configurations ======
+# Prepend personal binaries and system directories
+export PATH="$HOME/.local/bin:/opt/nvim-linux-x86_64/bin:$PATH"
+export PATH="$PATH:/usr/local/go/bin:$HOME/my_scripts"
 
-export RANGER_LOAD_DEFAULT_RC=FALSE
-export TERM=xterm-kitty
-export JAVA_HOME=/usr/lib/jvm/java-8-openjdk-amd64/
+# Java and Android paths (only if directories exist)
+export JAVA_HOME="/usr/lib/jvm/java-17-openjdk-amd64"
+[ -d "$JAVA_HOME/bin" ] && export PATH="$JAVA_HOME/bin:$PATH"
+
+export ANDROID_HOME="$HOME/Android/Sdk"
+[ -d "$ANDROID_HOME/emulator" ] && export PATH="$PATH:$ANDROID_HOME/emulator"
+[ -d "$ANDROID_HOME/platform-tools" ] && export PATH="$PATH:$ANDROID_HOME/platform-tools"
+
+# ====== Application Settings ======
+# Ranger (file manager)
+export RANGER_LOAD_DEFAULT_RC="FALSE"
 export RANGER_DEVICONS_SEPARATOR="  "
-export ANDROID_HOME=$HOME/Android/Sdk
-export DEVPOD_CONTAINER_RUNTIME=bin/podman
+
+# Terminal and development tools
+export TERM="xterm-kitty"
+export DEVPOD_CONTAINER_RUNTIME="bin/podman"
 
 case $- in
     *i*) ;;
@@ -107,7 +114,7 @@ alias off='poweroff'
 alias gitclone="git clone --depth=1"
 alias gpgenc='/home/lucio/my_scripts/encrypt_and_cleanup.sh'
 alias gpgdec='/home/lucio/my_scripts/decrypt_and_cleanup.sh'
-alias vpnjst='sudo openfortivpn -c ./.config/openfortivpn/JST'
+alias vpnjst='sudo openfortivpn -c ~/JST'
 # Configuraciones de complementos
 # [ -f ~/.fzf.bash ] && source ~/.fzf.bash
 eval "$(zoxide init --cmd cd bash)"

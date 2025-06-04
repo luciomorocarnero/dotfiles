@@ -26,7 +26,7 @@ return {
           "tailwindcss",
           "eslint",
           "ts_ls",
-          "volar",
+          -- "volar",
           "cssls",
           "cssmodules_ls",
           "css_variables",

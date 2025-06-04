@@ -6,7 +6,7 @@ vim.g.maplocalleader = " "
 vim.opt.exrc = true
 
 vim.g.have_nerd_font = true
-vim.g.spellfile_URL = 'https://ftp.nluug.nl/vim/runtime/spell'
+vim.g.spellfile_URL = "https://ftp.nluug.nl/vim/runtime/spell"
 
 -- [[ Setting options ]]
 -- See `:help vim.opt`
@@ -67,8 +67,8 @@ vim.opt.inccommand = "split"
 -- Show which line your cursor is on
 vim.opt.cursorline = true
 
--- Diagnostics
-vim.diagnostic.config({ virtual_text = true })
+-- -- Diagnostics
+-- vim.diagnostic.config({ virtual_text = true  })
 
 -- -- Minimal number of screen lines to keep above and below the cursor.
 vim.opt.scrolloff = 20
@@ -89,6 +89,8 @@ vim.o.shiftwidth = 2
 vim.o.tabstop = 2
 vim.o.softtabstop = 2
 
+vim.o.formatprg = "par -w 100"
+
 -- Reserve a space in the gutter
 -- This will avoid an annoying layout shift in the screen
 vim.opt.signcolumn = "yes"
@@ -104,9 +106,18 @@ vim.o.foldtext = ""
 vim.opt.foldcolumn = "0"
 vim.opt.fillchars:append({ fold = " " })
 
+vim.api.nvim_create_autocmd("FileType", {
+  pattern = "help",
+  callback = function()
+    vim.cmd("wincmd L")
+  end,
+})
+
 vim.filetype.add({
   extension = {
     astro = "astro",
     typst = "typst",
+    html = "html",
+    txt = "txt",
   },
 })

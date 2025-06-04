@@ -1,7 +1,7 @@
 return { -- Useful plugin to show you pending keybinds.
   "folke/which-key.nvim",
   dependencies = {
-    {"nvim-tree/nvim-web-devicons"}
+    { "nvim-tree/nvim-web-devicons" },
   },
   event = "VimEnter", -- Sets the loading event to 'VimEnter'
   opts = {
@@ -41,16 +41,16 @@ return { -- Useful plugin to show you pending keybinds.
 
     -- Document existing key chains
     spec = {
-      { "<leader>c", group = "[C]ode", mode = { "n", "x" } },
-      { "<leader>d", group = "[D]ocument" },
-      { "<leader>s", group = "[S]earch" },
-      { "<leader>w", group = "[W]orkspace" },
-      { "<leader>t", group = "[T]oggle" },
-      { "<leader>g", group = "[G]it" },
-      { "<leader>b", group = "[B]uffers" },
-      { "<leader>u", group = "[U]i" },
-      { "<leader>f", group = "[F]ile" },
-      { "<leader>l", group = "[L]azy" },
+      { "<leader>c", group = "  [C]ode", mode = { "n", "x" } },
+      -- { "<leader>d", group = "[D]ocument" },
+      { "<leader>s", group = "  [S]earch" },
+      { "<leader>t", group = "  [T]oggle" },
+      { "<leader>g", group = "  [G]it" },
+      { "<leader>b", group = "  [B]uffers" },
+      { "<leader>u", group = "  [U]i" },
+      { "<leader>f", group = "  [F]ile" },
+      { "<leader>l", group = " 󰒲 [L]azy" },
+      { "<leader>R", group = " 󰖟 [R]equest" },
     },
   },
 }
