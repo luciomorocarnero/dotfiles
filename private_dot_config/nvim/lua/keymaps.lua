@@ -16,6 +16,8 @@ vim.keymap.set("n", "<leader>q", vim.diagnostic.setloclist, { desc = "Open diagn
 vim.keymap.set("n", "<leader>ll", "<cmd>Lazy<cr>", { desc = "Lazy" })
 vim.keymap.set("n", "<leader>lm", "<cmd>Mason<cr>", { desc = "Mason" })
 
+-- Normal mode in terminal
+-- vim.keymap.set("t", "<esc>", [[<C-\><C-n>]], {silent = true, noremap = true})
 
 -- Keybinds to make split navigation easier.
 --  Use CTRL+<hjkl> to switch between windows

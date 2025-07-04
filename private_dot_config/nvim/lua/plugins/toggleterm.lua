@@ -3,7 +3,7 @@ return {
   version = "*", -- O especifica una versión si lo prefieres
   config = function()
     require("toggleterm").setup({
-      size = 20, -- Tamaño de la terminal al abrirla
+      size = 15, -- Tamaño de la terminal al abrirla
       open_mapping = [[<c-\>]], -- Combinación de teclas para abrir la terminal
       shade_filetypes = {},
       shading_factor = 2, -- Intensidad del sombreado en la terminal

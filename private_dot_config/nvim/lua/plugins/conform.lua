@@ -24,14 +24,15 @@ return {
           html = { "prettier", "prettierd", stop_after_first = true },
           css = { "prettier", "prettierd", stop_after_first = true },
           scss = { "prettierd", "prettier", stop_after_first = true },
-          --   bash = { "beautysh" },
+          bash = { "beautysh" },
+          sh = { "beautysh" },
           --   rust = { "rustfmt" },
           --   yaml = { "yamlfix" },
           --   toml = { "taplo" },
           --   sh = { "shellcheck" },
           --   go = { "gofmt" },
           --   xml = { "xmllint" },
-          -- http = {"kulala-fmt"}
+          http = {"kulala-fmt"}
         },
       })
 

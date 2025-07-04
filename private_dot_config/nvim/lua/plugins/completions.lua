@@ -22,19 +22,19 @@ return {
     -- Configuración de LuaSnip
     require("luasnip.loaders.from_vscode").lazy_load()
 
-    local filters = function (field)
+    local filters = function(field)
       return cmp.mapping.complete({
-          config = {
-            sources = {
-              {
-                name = "nvim_lsp",
-                entry_filter = function(entry)
-                  return require("cmp.types").lsp.CompletionItemKind[entry:get_kind()] == field
-                end,
-              },
+        config = {
+          sources = {
+            {
+              name = "nvim_lsp",
+              entry_filter = function(entry)
+                return require("cmp.types").lsp.CompletionItemKind[entry:get_kind()] == field
+              end,
             },
           },
-        })
+        },
+      })
     end
 
     -- Configuración de CMP

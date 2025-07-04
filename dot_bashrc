@@ -12,6 +12,9 @@ export PATH="$PATH:/usr/local/go/bin:$HOME/my_scripts"
 export JAVA_HOME="/usr/lib/jvm/java-17-openjdk-amd64"
 [ -d "$JAVA_HOME/bin" ] && export PATH="$JAVA_HOME/bin:$PATH"
 
+# Go
+[ -d "$HOME/go/bin" ] && export PATH="$HOME/go/bin:$PATH"
+
 export ANDROID_HOME="$HOME/Android/Sdk"
 [ -d "$ANDROID_HOME/emulator" ] && export PATH="$PATH:$ANDROID_HOME/emulator"
 [ -d "$ANDROID_HOME/platform-tools" ] && export PATH="$PATH:$ANDROID_HOME/platform-tools"
@@ -114,6 +117,7 @@ alias off='poweroff'
 alias gitclone="git clone --depth=1"
 alias gpgenc='/home/lucio/my_scripts/encrypt_and_cleanup.sh'
 alias gpgdec='/home/lucio/my_scripts/decrypt_and_cleanup.sh'
+alias games='~/my_scripts/choose_game.sh'
 alias vpnjst='sudo openfortivpn -c ~/JST'
 # Configuraciones de complementos
 # [ -f ~/.fzf.bash ] && source ~/.fzf.bash

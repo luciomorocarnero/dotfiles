@@ -51,11 +51,11 @@ vim.api.nvim_create_autocmd({ "BufWinEnter" }, {
   command = "silent! loadview",
 })
 
-vim.api.nvim_create_autocmd("CursorHold", {
-  callback = function()
-    vim.diagnostic.open_float(nil, { focusable = false, source = "if_many", border = "rounded", show_header = true })
-  end,
-})
+-- vim.api.nvim_create_autocmd("CursorHold", {
+--   callback = function()
+--     vim.diagnostic.open_float(nil, { focusable = false, source = "if_many", border = "rounded", show_header = true })
+--   end,
+-- })
 
 vim.api.nvim_create_autocmd({ "FileType" }, {
   pattern = { "txt" },
