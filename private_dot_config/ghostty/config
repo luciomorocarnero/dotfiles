@@ -1,0 +1,50 @@
+# Font
+font-feature                   = calt
+font-feature                   = liga
+font-feature                   = ss13
+font-style = SemiBold
+font-size                      = 10.5
+window-inherit-font-size       = true
+
+font-family = JetBrainsMono Nerd Font
+
+# adjust-cell-width = -10%
+adjust-cell-height = -10%
+
+# Look and Feel
+adjust-cursor-thickness        = 3
+adjust-underline-position      = 3
+bold-is-bright                 = true
+cursor-invert-fg-bg            = true
+cursor-opacity                 = 0.8
+link-url                       = true
+mouse-hide-while-typing        = true
+window-vsync                   = true
+
+# General
+clipboard-paste-protection     = true
+clipboard-trim-trailing-spaces = true
+quit-after-last-window-closed  = true
+scrollback-limit               = 4200
+shell-integration-features     = cursor,sudo,title
+copy-on-select = false
+maximize = true
+quick-terminal-position = center
+clipboard-read = allow
+clipboard-write = allow
+background-opacity = 0.95
+background-blur = 100
+split-divider-color = #12E3E3
+theme = kanagawabones
+window-decoration = none
+
+# Shell
+shell-integration = zsh
+initial-command=zsh
+
+# Keys
+keybind = clear
+keybind = ctrl+backspace=text:\x1b\x7f
+keybind = ctrl+shift+w=close_window
+keybind = ctrl+shift+v=paste_from_clipboard
+keybind = ctrl+shift+c=copy_to_clipboard
