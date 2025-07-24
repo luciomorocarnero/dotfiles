@@ -26,6 +26,8 @@ return {
           scss = { "prettierd", "prettier", stop_after_first = true },
           bash = { "beautysh" },
           sh = { "beautysh" },
+          zsh = { "beautysh" },
+          tmux = { "beautysh" },
           --   rust = { "rustfmt" },
           --   yaml = { "yamlfix" },
           --   toml = { "taplo" },

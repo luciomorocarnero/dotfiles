@@ -1,6 +1,6 @@
 # Enable Powerlevel10k instant prompt
 if [[ -r "${XDG_CACHE_HOME:-$HOME/.cache}/p10k-instant-prompt-${(%):-%n}.zsh" ]]; then
-  source "${XDG_CACHE_HOME:-$HOME/.cache}/p10k-instant-prompt-${(%):-%n}.zsh"
+    source "${XDG_CACHE_HOME:-$HOME/.cache}/p10k-instant-prompt-${(%):-%n}.zsh"
 fi
 
 # ====== Environment Setup ======
@@ -49,6 +49,7 @@ plugins=(
     zoxide
     fzf
     zsh-autosuggestions
+    tmux
 )
 
 # Carga diferida para mejorar rendimiento
@@ -127,6 +128,9 @@ function sysupdate() {
     sudo apt clean
 }
 
+if [ -f ~/.env ]; then
+  export $(grep -v '^#' ~/.env | xargs)
+fi
 # ====== Final Setup ======
 # Comprobar y cargar variables de entorno
 # [ -f ~/.env ] && source <(grep -v '^#' ~/.env | xargs -d '\n' export)
