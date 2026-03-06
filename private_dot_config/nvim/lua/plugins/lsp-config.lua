@@ -33,7 +33,7 @@ return {
           "html",
           "tinymist",
           "clangd",
-          "yamlls"
+          "yamlls",
         },
         automatic_installation = true,
       })

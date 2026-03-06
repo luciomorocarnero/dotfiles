@@ -16,22 +16,24 @@ return {
         },
       },
       adapters = {
-        gemini = function()
-          local api_key = vim.env.GEMINI_API_KEY
-          if not api_key then
-            vim.notify("GEMINI_API_KEY no está configurada.", vim.log.levels.ERROR)
+        http = {
+          gemini = function()
+            local api_key = vim.env.GEMINI_API_KEY
+            if not api_key then
+              vim.notify("GEMINI_API_KEY no está configurada.", vim.log.levels.ERROR)
+              return require("codecompanion.adapters").extend("gemini", {
+                env = {
+                  api_key = "",
+                },
+              })
+            end
             return require("codecompanion.adapters").extend("gemini", {
               env = {
-                api_key = "",
+                api_key = api_key,
               },
             })
-          end
-          return require("codecompanion.adapters").extend("gemini", {
-            env = {
-              api_key = api_key,
-            },
-          })
-        end,
+          end,
+        },
       },
     })
     vim.keymap.set("n", "<leader>li", "<cmd>CodeCompanionActions<cr>", { desc = "Lazy AI" })

@@ -22,7 +22,7 @@ tab_size        = 2
 max_width       = 600
 max_height      = 900
 cache_dir       = ""
-image_delay     = 30
+image_delay     = 50
 image_filter    = "triangle"
 image_quality   = 75
 ueberzug_scale  = 1
@@ -39,6 +39,9 @@ open = [
 	{ run = 'open "$@"',                    desc = "Open", for = "macos" },
 	{ run = 'start "" "%1"', orphan = true, desc = "Open", for = "windows" },
 	{ run = 'termux-open "$1"',             desc = "Open", for = "android" },
+]
+open_xopp = [
+	{ run = 'xdg-open "$@"', desc = "Xournal++", for = "linux" },
 ]
 reveal = [
 	{ run = 'xdg-open "$(dirname "$1")"',           desc = "Reveal", for = "linux" },
@@ -59,6 +62,8 @@ play = [
 
 [open]
 rules = [
+	# Xournal
+	{ name = "*.xopp", use = ["open_xopp", "reveal"] },
 	# Folder
 	{ name = "*/", use = [ "edit", "open", "reveal" ] },
 	# Text
@@ -221,3 +226,4 @@ sort_by      	 = "none"
 sort_sensitive = false
 sort_reverse 	 = false
 sort_translit  = false
+

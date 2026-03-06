@@ -11,7 +11,7 @@ return {
       -- Custom format string to open the output link provided with %s
       -- Example: open_cmd = 'firefox %s -P typst-preview --class typst-preview'
       -- open_cmd = 'firefox -kiosk -P "tmp" -url %s --class typst-preview',
-      open_cmd = 'firefox %s --class typst-preview',
+      open_cmd = 'brave-browser %s --class typst-preview',
 
       -- Custom port to open the preview server. Default is random.
       -- Example: port = 8000

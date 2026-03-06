@@ -17,7 +17,7 @@ if ! tmux has-session -t "$SESSION" 2>/dev/null; then
     # Run commands in panes/windows
     tmux send-keys -t default:1.0 "cd ~" C-m
     tmux send-keys -t default:2 "y" C-m
-    tmux send-keys -t default:4 "nvim ~/fast_notes.md" C-m
+    tmux send-keys -t default:4 "cd ~/notes/sueltos/ && nvim" C-m
 
     # Select the first window and attach
     tmux select-window -t default:1
