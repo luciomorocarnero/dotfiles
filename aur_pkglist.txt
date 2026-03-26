@@ -1,0 +1,9 @@
+auto-cpufreq
+cloudflare-warp-bin
+discord-canary
+dragon-drop
+hyprshutdown
+tmuxinator
+yay
+yay-debug
+zsh-theme-powerlevel10k-git

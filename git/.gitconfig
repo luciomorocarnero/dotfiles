@@ -1,0 +1,8 @@
+[ai]
+	addressfamily = ipv4
+[http]
+	postBuffer = 524288000
+	sslVersion = tlsv1.2
+[user]
+	email = luxiocarnero@gmail.com
+	name = Lucio Moro Carnero

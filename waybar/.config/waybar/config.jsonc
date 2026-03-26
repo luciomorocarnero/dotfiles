@@ -1,0 +1,67 @@
+{
+  "layer": "top",
+  "position": "top",
+  "height": 30,
+  "margin-top": 5,
+  "margin-left": 5,
+  "margin-right": 5,
+  "spacing": 0,
+  "modules-left": [
+    "hyprland/workspaces"
+  ],
+  "modules-center": [],
+  "modules-right": [
+    "bluetooth",
+    "custom/network_warp",
+    "custom/check_mic",
+    "pulseaudio",
+    "battery",
+    "clock"
+  ],
+  "hyprland/workspaces": {
+    "format": "{name}"
+  },
+  "cpu": {
+    "format": " {usage}%"
+  },
+  "memory": {
+    "format": "󰍛 {}%"
+  },
+  "pulseaudio": {
+    "format": " "
+  },
+  "battery": {
+    "format": "{capacity}%"
+  },
+  "bluetooth": {
+    "format": "",
+    "format-disabled": "",
+    "format-off": "",
+    "format-connected": "{device_alias}",
+    "tooltip-format": "{device_alias}"
+  },
+  "clock": {
+    "timezone": "America/Argentina/Buenos_Aires",
+    "format": "{:%H:%M}",
+    "tooltip-format": "<big>{:%Y %B}</big>\n<tt><small>{calendar}</small></tt>"
+  },
+  "custom/network_warp": {
+    "format": "{}",
+    "return-type": "json",
+    "exec": "~/.config/waybar/scripts/net-logic.sh",
+    "interval": 60,
+    "on-click": "warp-cli connect && pkill -RTMIN+9 waybar", // Señal 9 para red
+    "on-click-right": "warp-cli disconnect && pkill -RTMIN+9 waybar",
+    "signal": 9,
+    "tooltip": false  },
+  "custom/check_mic": {
+    "format": "{}",
+    "return-type": "json",
+    "exec": "~/.config/waybar/scripts/check-mic.sh",
+    "interval": "once",
+    "on-click": "wpctl set-mute $MIC_ID toggle && pkill -RTMIN+8 waybar",
+    "on-click-right": "",
+    "tooltip": false,
+    "signal": 8,
+  }
+}

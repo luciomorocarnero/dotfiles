@@ -1,0 +1,2 @@
+#!/usr/bin/env zsh
+firefox --new-window --class "youtube" --kiosk "https://www.youtube.com"

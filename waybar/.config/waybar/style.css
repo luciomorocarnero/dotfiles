@@ -1,0 +1,114 @@
+/* Reset general */
+* {
+    border: none;
+    border-radius: 0;
+    font-family: "CaskaydiaCove Nerd Font", "Roboto", Helvetica, Arial, sans-serif;
+    font-size: 13px;
+    min-height: 0;
+}
+
+window#waybar {
+    background-color: transparent; /* El fondo real lo manejamos en los módulos o el contenedor */
+    color: #ffffff;
+    transition-property: background-color;
+    transition-duration: .5s;
+}
+
+/* Contenedor principal de cada módulo */
+#workspaces,
+#clock,
+#bluetooth,
+#pulseaudio,
+#network,
+#custom-network_warp,
+#custom-check_mic,
+#battery {
+    background-color: #000000;
+    color: #ffffff;
+    padding: 2px 10px;
+    margin: 0 4px;
+    border: 1px solid #ffffff; /* Borde blanco para resaltar sobre fondos oscuros */
+    border-radius: 4px; /* Redondeado moderado */
+}
+
+/* Estilo específico para los espacios de trabajo */
+#workspaces button {
+    padding: 0 3px;
+    background-color: transparent;
+    color: #ffffff;
+    /* Transición suave para color y fondo */
+    transition: all 0.3s cubic-bezier(.55,-0.04,.3,1); 
+    border-radius: 2px;
+}
+
+#workspaces button.active {
+    background-color: #ffffff;
+    color: #000000;
+    /* padding: 0 7px; */
+}
+
+#workspaces button.active:hover {
+    background-color: #ffffff;
+    color: #000000;
+}
+
+#workspaces button:hover {
+    background: rgba(255, 255, 255, 0.2);
+    box-shadow: inset 0 -2px #ffffff; /* Una línea sutil abajo al pasar el mouse */
+}
+
+/* Alertas de batería */
+
+#battery {
+    background-color: #000000;
+    color: #ffffff;
+}
+
+#battery.warning {
+    background-color: #e6ed1a;
+    color: #000000;
+}
+
+#battery:not(.discharging) {
+    background-color: #ffffff;
+    color: #000000;
+}
+
+/* Pulseaudio muted */
+
+#pulseaudio:not(.muted) {
+    background-color: #ffffff;
+    color: #000000;
+}
+
+/* Network desconectado */
+
+#network.disconnected {
+    background-color: #444444;
+}
+
+
+/* CloudFare */
+#custom-network_warp.disconnected {
+    background-color: #444444;
+}
+
+#custom-network_warp.connected {
+    background-color: #000000;
+    color: #ffffff;
+}
+
+#custom-network_warp.warp-connected {
+    background-color: #ffffff;
+    color: #000000;
+}
+
+#custom-check_mic.muted {
+    background-color: #000000;
+    color: #ffffff;
+}
+
+#custom-check_mic.active {
+    background-color: #ffffff;
+    color: #000000;
+}
