@@ -43,7 +43,7 @@
   "clock": {
     "timezone": "America/Argentina/Buenos_Aires",
     "format": "{:%H:%M}",
-    "tooltip-format": "<big>{:%Y %B}</big>\n<tt><small>{calendar}</small></tt>"
+    "tooltip-format": "<big>{:%A, %d %B %Y}</big>\n<tt><small>{calendar}</small></tt>"
   },
   "custom/network_warp": {
     "format": "{}",
@@ -59,7 +59,7 @@
     "return-type": "json",
     "exec": "~/.config/waybar/scripts/check-mic.sh",
     "interval": "once",
-    "on-click": "wpctl set-mute $MIC_ID toggle && pkill -RTMIN+8 waybar",
+    "on-click": "wpctl set-mute @DEFAULT_AUDIO_SOURCE@ toggle && pkill -RTMIN+8 waybar",
     "on-click-right": "",
     "tooltip": false,
     "signal": 8,

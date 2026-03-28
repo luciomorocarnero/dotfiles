@@ -1,9 +1,7 @@
 #!/bin/bash
 
-MIC=${MIC_ID:-@DEFAULT_AUDIO_SOURCE@}
-
 # Obtenemos el estado del micorfono
-STATE=$(wpctl get-volume "$MIC")
+STATE=$(wpctl get-volume @DEFAULT_AUDIO_SOURCE@)
 
 if [[ $STATE == *"MUTED"* ]]; then
     # Si está muteado, mandamos el ícono de tachado y una clase "muted"

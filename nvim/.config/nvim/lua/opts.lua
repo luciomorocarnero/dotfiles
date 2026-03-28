@@ -22,11 +22,11 @@ vim.opt.showmode = false
 --  See `:help 'clipboard'`
 vim.schedule(function()
   vim.opt.clipboard = "unnamedplus"
-  vim.keymap.set({'n', 'v'}, 'd', '"_d')
-  vim.keymap.set({'n', 'v'}, 'c', '"_c')
-  vim.keymap.set('n', 'D', '"_D')
-  vim.keymap.set('n', 'C', '"_C')
-  vim.keymap.set('x', 'p', '"_dP')
+  vim.keymap.set({ "n", "v" }, "d", '"_d')
+  vim.keymap.set({ "n", "v" }, "c", '"_c')
+  vim.keymap.set("n", "D", '"_D')
+  vim.keymap.set("n", "C", '"_C')
+  vim.keymap.set("x", "p", '"_dP')
 end)
 
 -- Enable break indent
@@ -66,7 +66,7 @@ vim.opt.inccommand = "split"
 vim.opt.cursorline = true
 
 -- -- Diagnostics
-vim.diagnostic.config({ virtual_text = true  })
+vim.diagnostic.config({ virtual_text = true })
 
 -- -- Minimal number of screen lines to keep above and below the cursor.
 vim.opt.scrolloff = 20
@@ -86,7 +86,6 @@ vim.opt.signcolumn = "yes"
 
 -- Nice and simple folding:
 
-
 vim.o.foldenable = true
 vim.o.foldlevel = 99
 vim.o.foldmethod = "expr"
@@ -95,8 +94,6 @@ vim.o.foldtext = ""
 vim.opt.foldcolumn = "0"
 vim.opt.fillchars:append({ fold = " " })
 
-
-
 vim.filetype.add({
   extension = {
     astro = "astro",
@@ -104,4 +101,5 @@ vim.filetype.add({
     html = "html",
     txt = "txt",
   },
+  pattern = { [".*/hypr/.*%.conf"] = "hyprlang" },
 })
