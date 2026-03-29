@@ -2,7 +2,7 @@
 # Initialization code that may require console input (password prompts, [y/n]
 # confirmations, etc.) must go above this block; everything else may go below.
 if [[ -r "${XDG_CACHE_HOME:-$HOME/.cache}/p10k-instant-prompt-${(%):-%n}.zsh" ]]; then
-  source "${XDG_CACHE_HOME:-$HOME/.cache}/p10k-instant-prompt-${(%):-%n}.zsh"
+    source "${XDG_CACHE_HOME:-$HOME/.cache}/p10k-instant-prompt-${(%):-%n}.zsh"
 fi
 
 # If you come from bash you might have to change your $PATH.
@@ -32,24 +32,37 @@ zstyle ':omz:update' frequency 13
 ENABLE_CORRECTION="true"
 
 plugins=(
-zsh-syntax-highlighting
-zoxide
-fzf
-zsh-autosuggestions
-tmux
+    zsh-syntax-highlighting
+    zoxide
+    fzf
+    zsh-autosuggestions
+    tmux
 )
 
 source $ZSH/oh-my-zsh.sh
 
 #====== Aliases ======
 alias ls='exa -al -F -s=type --group-directories-first --icons --color=always'
-alias lg='exa -al -F -s=type --group-directories-first --icons --color=always | grep'
 alias lt="exa -al -T -L"
-function ld() {
-    if [ -z "$1" ]; then
-        exa -a -D -T -L 1
+ld() {
+    local depth=1
+    local copy=false
+    local args=()
+
+    for arg in "$@"; do
+        if [[ "$arg" == "-c" ]]; then
+            copy=true
+        elif [[ "$arg" =~ ^[0-9]+$ ]]; then
+            depth=$arg
+        else
+            args+=("$arg")
+        fi
+    done
+
+    if [ "$copy" = true ]; then
+        fd -H . -d "$depth" "${args[@]}" | wl-copy
     else
-        exa -a -D -T -L "$1"
+        fd -H . -d "$depth" "${args[@]}"
     fi
 }
 alias python='python3'
@@ -77,9 +90,9 @@ function y() {
 
 # Preferred editor for local and remote sessions
 if [[ -n $SSH_CONNECTION ]]; then
-  export TERM='xterm'
+    export TERM='xterm'
 else
-  export TERM='xterm-kitty'
+    export TERM='xterm-kitty'
 fi
 
 # ZOXIDE
