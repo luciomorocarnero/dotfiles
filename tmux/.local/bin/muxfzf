@@ -1,0 +1,7 @@
+#!/bin/bash
+
+project=$(tmuxinator list -n | tail -n +2 | fzf --height 40% --reverse --border --header="Seleccionar Proyecto Tmuxinator")
+
+if [ -n "$project" ]; then
+    tmuxinator start "$project"
+fi

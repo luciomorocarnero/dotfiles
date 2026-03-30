@@ -1,0 +1,29 @@
+name: intranet
+root: ~/Codes/Work/Intranet/
+
+windows:
+  - nvim:
+      - cd ./src
+      - pyenv shell 3.12.2
+      - source ./venv/bin/activate
+      - clear
+      - nvim
+  - term:
+    - cd /src
+    - clear
+  - run:
+      layout: main-vertical
+      panes:
+        - run:
+            - cd ./src
+            - pyenv shell 3.12.2
+            - source ./venv/bin/activate
+            - clear
+            - python manage.py runserver
+        - db:
+            - cd ./db
+            - clear
+            - docker compose up
+  - ssh:
+      - export TERM=xterm
+      - ssh sistemas@132.18.0.77
