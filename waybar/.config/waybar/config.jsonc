@@ -50,7 +50,7 @@
     "return-type": "json",
     "exec": "~/.config/waybar/scripts/net-logic.sh",
     "interval": 60,
-    "on-click": "warp-cli connect && sleep 1 && pkill -RTMIN+9 waybar", // Señal 9 para red
+    "on-click": "warp-cli connect && sleep 10 && pkill -RTMIN+9 waybar", // Señal 9 para red
     "on-click-right": "warp-cli disconnect && pkill -RTMIN+9 waybar",
     "signal": 9,
     "tooltip": false  },

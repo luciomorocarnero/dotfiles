@@ -1,7 +1,7 @@
 #!/bin/bash
 
 declare -A options=(
-    ["  Power Off"]="hyprshutdown -t 'Shutting down...' --post-cmd 'shutdown -P 0'"
+    ["  Power Off"]="killall kitty && hyprshutdown -t 'Shutting down...' --post-cmd 'shutdown -P 0'"
     ["  Restart"]="hyprshutdown -t 'Restarting...' --post-cmd 'reboot'"
     ["  Sleep"]="hyprlock & sleep 1 & systemctl suspend"
     ["  Logout"]="hyprctl dispatch exit"
