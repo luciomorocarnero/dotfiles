@@ -1,15 +1,23 @@
 #!/bin/bash
 
-declare -A options=(
-    ["  Power Off"]="killall kitty && hyprshutdown -t 'Shutting down...' --post-cmd 'shutdown -P 0'"
-    ["  Restart"]="hyprshutdown -t 'Restarting...' --post-cmd 'reboot'"
-    ["  Sleep"]="hyprlock & sleep 1 & systemctl suspend"
-    ["  Logout"]="hyprctl dispatch exit"
-    ["  Lock"]="hyprlock"
+options=(
+    "  Power Off"
+    "  Restart"
+    "  Sleep"
+    "  Logout"
+    "  Lock"
 )
 
-choice=$(printf "%s\n" "${!options[@]}" | rofi -dmenu -i -p "System:")
+choice=$(printf "%s\n" "${options[@]}" | rofi -dmenu -i -p "System:")
 
-if [[ -n "${options[$choice]}" ]]; then
-    exec bash -c "${options[$choice]}"
-fi
+case "$choice" in
+    "  Power Off") systemctl poweroff ;;
+    "  Restart") systemctl reboot ;;
+    "  Sleep")
+        hyprlock &
+        sleep 1
+        systemctl suspend
+        ;;
+    "  Logout") hyprctl dispatch exit ;;
+    "  Lock") hyprlock ;;
+esac

@@ -26,6 +26,7 @@ return {
           "hyprls",
           "bashls",
           "yamlls",
+          "tinymist",
           -- "docker_language_server",
           -- "astro",
           -- "tailwindcss",
@@ -56,7 +57,6 @@ return {
         capabilities = lsp_capabilities,
         root_markers = { ".git" },
       })
-
     end,
   },
 }

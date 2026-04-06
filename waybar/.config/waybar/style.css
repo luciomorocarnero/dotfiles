@@ -1,4 +1,4 @@
-/* Reset general */
+/* Reset */
 * {
     border: none;
     border-radius: 0;
@@ -14,7 +14,6 @@ window#waybar {
     transition-duration: .5s;
 }
 
-/* Contenedor principal de cada módulo */
 #workspaces,
 #clock,
 #bluetooth,
@@ -27,16 +26,17 @@ window#waybar {
     color: #ffffff;
     padding: 2px 10px;
     margin: 0 4px;
-    border: 1px solid #ffffff; /* Borde blanco para resaltar sobre fondos oscuros */
-    border-radius: 4px; /* Redondeado moderado */
+    border: 1px solid #ffffff; 
+    border-radius: 4px; 
 }
 
-/* Estilo específico para los espacios de trabajo */
+
+/* Workspaces */
 #workspaces button {
     padding: 0 3px;
     background-color: transparent;
     color: #ffffff;
-    /* Transición suave para color y fondo */
+
     transition: all 0.3s cubic-bezier(.55,-0.04,.3,1); 
     border-radius: 2px;
 }
@@ -54,11 +54,10 @@ window#waybar {
 
 #workspaces button:hover {
     background: rgba(255, 255, 255, 0.2);
-    box-shadow: inset 0 -2px #ffffff; /* Una línea sutil abajo al pasar el mouse */
+    box-shadow: inset 0 -2px #ffffff; 
 }
 
-/* Alertas de batería */
-
+/* Widgets */
 #battery {
     background-color: #000000;
     color: #ffffff;
@@ -74,21 +73,15 @@ window#waybar {
     color: #000000;
 }
 
-/* Pulseaudio muted */
-
 #pulseaudio:not(.muted) {
     background-color: #ffffff;
     color: #000000;
 }
 
-/* Network desconectado */
-
 #network.disconnected {
     background-color: #444444;
 }
 
-
-/* CloudFare */
 #custom-network_warp.disconnected {
     background-color: #444444;
 }

@@ -73,7 +73,6 @@ alias mount-ubuntu='sudo mount /dev/nvme0n1p4 /mnt/ubuntu'
 alias Ss="pacman -Ss"
 alias Qs="pacman -Qs"
 alias S="sudo pacman -S"
-alias vpnjst='sudo openfortivpn -c ~/JST'
 
 # Yazi file manager with directory changing
 function y() {
@@ -106,6 +105,9 @@ eval "$(zoxide init zsh)"
 export PYENV_ROOT="$HOME/.pyenv"
 [[ -d $PYENV_ROOT/bin ]] && export PATH="$PYENV_ROOT/bin:$PATH"
 eval "$(pyenv init - zsh)"
+
+# NAVI
+eval "$(navi widget zsh)"
 
 # POWERLEVEL10k
 source /usr/share/zsh-theme-powerlevel10k/powerlevel10k.zsh-theme
