@@ -18,6 +18,8 @@ ENABLE_CORRECTION="true"
 # Case-sensitive completion must be off. _ and - will be interchangeable.
 HYPHEN_INSENSITIVE="true"
 
+
+
 # zstyle ':omz:update' mode disabled  # disable automatic updates
 # zstyle ':omz:update' mode auto      # update automatically without asking
 zstyle ':omz:update' mode reminder  # just remind me to update when it's time
@@ -41,9 +43,10 @@ plugins=(
 
 source $ZSH/oh-my-zsh.sh
 
+setopt HIST_IGNORE_SPACE
 #====== Aliases ======
-alias ls='exa -al -F -s=type --group-directories-first --icons --color=always'
-alias lt="exa -al -T -L"
+alias ls=' exa -al -F -s=type --group-directories-first --icons --color=always'
+alias lt=" exa -al -T -L"
 ld() {
     local depth=1
     local copy=false
@@ -67,9 +70,9 @@ ld() {
 }
 alias python='python3'
 alias vim='nvim'
-alias gitclone="git clone --depth=1"
-alias c="clear"
-alias mount-ubuntu='sudo mount /dev/nvme0n1p4 /mnt/ubuntu'
+alias gitclone=" git clone --depth=1"
+alias c=" clear"
+alias mount-ubuntu=' sudo mount /dev/nvme0n1p4 /mnt/ubuntu'
 alias Ss="pacman -Ss"
 alias Qs="pacman -Qs"
 alias S="sudo pacman -S"

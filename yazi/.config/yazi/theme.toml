@@ -1,3 +1,12 @@
 [flavor]
 dark = "kanagawa"
 # dark = "modus-vivendi"
+
+[icon]
+prepend_dirs = [
+	{ name = "Notes", text = "", fg = "#00bcd4" },
+	{ name = "dotfiles", text = "", fg = "#00bcd4" },
+	{ name = "Codes", text = "", fg = "#00bcd4" },
+	{ name = "Templates", text = "󰂾", fg = "#00bcd4" },
+	# ...
+]
