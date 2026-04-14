@@ -27,6 +27,7 @@ return {
           "bashls",
           "yamlls",
           "tinymist",
+          "rust_analyzer",
           -- "docker_language_server",
           -- "astro",
           -- "tailwindcss",
