@@ -1,0 +1,7 @@
+require("Hyprconfig.variables")
+require("Hyprconfig.on")
+require("Hyprconfig.monitors")
+require("Hyprconfig.general")
+require("Hyprconfig.keymaps")
+require("Hyprconfig.rules")
+require("Hyprconfig.animations")

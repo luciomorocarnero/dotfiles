@@ -77,6 +77,7 @@ alias Ss="pacman -Ss"
 alias Qs="pacman -Qs"
 alias S="sudo pacman -S"
 
+
 # Yazi file manager with directory changing
 function y() {
     local tmp="$(mktemp -t "yazi-cwd.XXXXXX")"

@@ -31,7 +31,11 @@
     "format": " "
   },
   "battery": {
-    "format": "{capacity}%"
+    "format": "{capacity}%",
+    "states": {
+            "warning": 30,
+            "critical": 20
+        }
   },
   "bluetooth": {
     "format": "",
