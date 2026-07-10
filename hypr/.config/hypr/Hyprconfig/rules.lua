@@ -66,3 +66,11 @@ hl.window_rule({
 
 	no_focus = true,
 })
+
+hl.window_rule({
+  name = "disable group animation In/Out",
+  animation = "popin 100%",
+  match = {
+    group = true
+  }
+})

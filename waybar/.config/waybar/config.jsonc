@@ -11,6 +11,7 @@
   ],
   "modules-center": [],
   "modules-right": [
+    "custom/soundcore_battery",
     "bluetooth",
     "custom/network_warp",
     "custom/check_mic",
@@ -28,7 +29,8 @@
     "format": "󰍛 {}%"
   },
   "pulseaudio": {
-    "format": " "
+    "format": " ",
+    "on-click": "wpctl set-mute @DEFAULT_AUDIO_SINK@ toggle",
   },
   "battery": {
     "format": "{capacity}%",
@@ -67,5 +69,13 @@
     "on-click-right": "",
     "tooltip": false,
     "signal": 8,
+  },
+  "custom/soundcore_battery": {
+    "format": "{}",
+    "return-type": "json",
+    "exec": "~/.config/waybar/scripts/soundcore_battery.sh",
+    "interval": 600,
+    "on-click-right": "",
+    "tooltip": false,
   }
 }

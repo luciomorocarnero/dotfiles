@@ -58,16 +58,17 @@ hl.config({
 	},
 })
 
-
 hl.config({
-    misc = {
-        force_default_wallpaper = 0,
-        disable_hyprland_logo   = true,
-        animate_manual_resizes = true,
-        animate_mouse_windowdragging = true,
-        mouse_move_enables_dpms = true,
-        key_press_enables_dpms = false,
-    },
+	misc = {
+		font_family = "CaskaydiaCove Nerd Font",
+		force_default_wallpaper = 0,
+		disable_hyprland_logo = true,
+		animate_manual_resizes = true,
+		animate_mouse_windowdragging = true,
+		mouse_move_enables_dpms = true,
+		key_press_enables_dpms = false,
+		exit_window_retains_fullscreen = false,
+	},
 })
 
 hl.config({
@@ -86,6 +87,29 @@ hl.config({
 
 		touchpad = {
 			natural_scroll = true,
+		},
+	},
+})
+
+hl.config({
+	group = {
+		group_on_movetoworkspace = true,
+		col = {
+			border_active = "rgba(ffffffff)",
+			border_inactive = "rgba(595959ff)",
+		},
+		groupbar = {
+			height = 25,
+			indicator_gap = 0,
+			rounding = 0,
+			gaps_out = 0,
+			gaps_in = 0,
+			font_size = 13,
+			text_color_inactive = "rgba(aaaaaaff)",
+			col = {
+				active = "rgba(ffffffff)",
+				inactive = "rgb(000000)",
+			},
 		},
 	},
 })

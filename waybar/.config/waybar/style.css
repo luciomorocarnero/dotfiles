@@ -21,6 +21,7 @@ window#waybar {
 #network,
 #custom-network_warp,
 #custom-check_mic,
+#custom-soundcore_battery,
 #battery {
     background-color: #000000;
     color: #ffffff;
@@ -67,12 +68,14 @@ window#waybar {
     background-color: #ffaa00;
     color: #000000;
     font-weight : 700;
+    border: none;
 }
 
 #battery.critical {
     background-color: #dd0000;
     color: #ffffff;
     font-weight : 700;
+    border: none;
 }
 
 #battery:not(.discharging) {
@@ -111,4 +114,18 @@ window#waybar {
 #custom-check_mic.active {
     background-color: #ffffff;
     color: #000000;
+}
+
+#custom-soundcore_battery.warning{
+    background-color: #ffaa00;
+    color: #000000;
+    border: none;
+    font-weight : 700;
+}
+
+#custom-soundcore_battery.critical{
+    background-color: #ff0000;
+    color: #000000;
+    border: none;
+    font-weight : 700;
 }

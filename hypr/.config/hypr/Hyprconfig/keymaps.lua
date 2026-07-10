@@ -21,6 +21,10 @@ hl.bind(keys(mainMod, "SHIFT", "P"), hl.dsp.exec_cmd("hyprpicker -a"))
 
 -- turn on screen
 hl.bind(keys(mainMod, "F11"), hl.dsp.dpms({ action = "enable" }), { locked = true })
+hl.bind(keys(mainMod, "SHIFT", "E"), function()
+	hl.dispatch(hl.dsp.dpms({ action = "enable" }))
+	hl.exec_cmd("pkill hyprlock")
+end, { locked = true })
 
 -- turn off screen
 hl.bind(keys(mainMod, "F12"), function()
@@ -198,3 +202,24 @@ hl.gesture({
 		hl.notification.create({ text = "I just swiped on my trackpad!", duration = 5000, icon = "ok" })
 	end,
 })
+
+-- GROUPS
+hl.bind(keys(mainMod, "G"), hl.dsp.group.toggle())
+hl.bind(keys(mainMod, "SHIFT", "G"),hl.dsp.group.lock_active({action = "toggle"}) )
+local group_direction = {
+	{ key = "L", forward = true },
+	{ key = "J", forward = true },
+	{ key = "LEFT", forward = true },
+	{ key = "H", forward = false },
+	{ key = "K", forward = false },
+	{ key = "RIGHT", forward = false },
+}
+for _, m in ipairs(group_direction) do
+	if m.forward then
+		hl.bind(keys(mainMod, "ALT", m.key), hl.dsp.group.next())
+		hl.bind(keys(mainMod, "SHIFT", "ALT", m.key), hl.dsp.group.move_window({ forward = m.forward }))
+	else
+		hl.bind(keys(mainMod, "ALT", m.key), hl.dsp.group.prev())
+		hl.bind(keys(mainMod, "SHIFT", "ALT", m.key), hl.dsp.group.move_window({ forward = m.forward }))
+	end
+end
