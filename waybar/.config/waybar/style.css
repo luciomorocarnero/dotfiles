@@ -17,6 +17,7 @@ window#waybar {
 #workspaces,
 #clock,
 #bluetooth,
+#idle_inhibitor,
 #pulseaudio,
 #network,
 #custom-network_warp,
@@ -90,6 +91,11 @@ window#waybar {
 
 #network.disconnected {
     background-color: #444444;
+}
+
+#idle_inhibitor.activated {
+    background-color: #ffffff;
+    color: #000000;
 }
 
 #custom-network_warp.disconnected {
