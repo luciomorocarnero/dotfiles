@@ -42,6 +42,8 @@ hl.bind(keys(mainMod, "B"), hl.dsp.exec_cmd("~/.config/rofi/scripts/browser.sh")
 hl.bind(keys(mainMod, "SHIFT", "B"), hl.dsp.exec_cmd("~/.config/rofi/scripts/browser.sh -n"))
 hl.bind(keys(mainMod, "D"), hl.dsp.exec_cmd('rofi -show run -i --no-show-icons -p "Apps"'))
 hl.bind(keys(mainMod, "C"), hl.dsp.exec_cmd("cliphist list | rofi -dmenu | cliphist decode | wl-copy"))
+hl.bind(keys(mainMod, "W"), hl.dsp.exec_cmd("~/.config/rofi/scripts/wallpaper.sh"))
+hl.bind(keys(mainMod, "SHIFT", "W"), hl.dsp.exec_cmd("~/.config/rofi/scripts/wallpaper.sh -r"))
 
 -- WORKSPACES AND WINDOWS
 

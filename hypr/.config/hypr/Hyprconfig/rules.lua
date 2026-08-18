@@ -40,7 +40,7 @@ hl.workspace_rule({
 hl.workspace_rule({
 	workspace = "special:stats",
 	layout = "master",
-	on_created_empty = "kitty -e btm & sleep 0.2 && (kitty -e wiremix & sleep 0.2 && kitty -e bluetui)",
+	on_created_empty = "kitty -e btm & sleep 0.2 && (kitty -e wiremix & sleep 0.2 && kitty -e bluetui & sleep 0.2 && kitty -e impala)",
 })
 
 local suppressMaximizeRule = hl.window_rule({
