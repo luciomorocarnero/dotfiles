@@ -33,7 +33,7 @@ hl.workspace_rule({
 
 hl.workspace_rule({
 	workspace = "special:notes",
-	on_created_empty = "kitty -e nvim ~/Notes/fast.md",
+	on_created_empty = "kitty --working-directory ~/Notes/ -e nvim ~/Notes/fast.md",
 	gaps_out = 150,
 })
 

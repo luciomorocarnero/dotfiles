@@ -8,7 +8,7 @@ return {
       dependencies = { "rafamadriz/friendly-snippets" },
       config = function()
         require("luasnip").setup({
-          history = true,
+          history = false,
           updateevents = "TextChanged,TextChangedI",
           enable_autosnippets = true,
         })

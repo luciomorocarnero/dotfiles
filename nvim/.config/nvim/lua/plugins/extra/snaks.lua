@@ -19,7 +19,7 @@ return {
     },
     quickfile = { enabled = true },
     scope = { enabled = true },
-    scroll = { enabled = true },
+    scroll = { enabled = false },
     statuscolumn = { enabled = true },
     scratch = {enabled =true},
     words = { enabled = true },

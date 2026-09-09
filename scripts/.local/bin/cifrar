@@ -1,0 +1,47 @@
+#!/bin/bash
+set -euo pipefail
+
+if [ "$#" -ne 1 ]; then
+    echo "Uso: $0 <archivo_o_directorio>" >&2
+    exit 1
+fi
+
+TARGET="$1"
+
+if [ ! -e "$TARGET" ]; then
+    echo "Error: '$TARGET' no existe." >&2
+    exit 1
+fi
+
+if [ -d "$TARGET" ]; then
+    OUTPUT="${TARGET%/}.tar.gz.gpg"
+    echo "Cifrando directorio '$TARGET' -> '$OUTPUT'..."
+
+    # Transmite el archivo tar directamente a gpg en memoria RAM (cero archivos en disco)
+    tar -czf - "$TARGET" | gpg --symmetric --cipher-algo AES256 --output "$OUTPUT"
+
+    # Comprobar la estructura del archivo cifrado antes de eliminar el original
+    if gpg --quiet --batch --list-packets "$OUTPUT" &>/dev/null; then
+        rm -rf "$TARGET"
+        echo "Directorio cifrado con éxito y original eliminado."
+    else
+        echo "Error: El archivo cifrado no es válido. No se eliminó el original." >&2
+        exit 1
+    fi
+
+elif [ -f "$TARGET" ]; then
+    OUTPUT="$TARGET.gpg"
+    echo "Cifrando archivo '$TARGET' -> '$OUTPUT'..."
+
+    gpg --symmetric --cipher-algo AES256 --output "$OUTPUT" "$TARGET"
+
+    if gpg --quiet --batch --list-packets "$OUTPUT" &>/dev/null; then
+        rm -f "$TARGET"
+        echo "Archivo cifrado con éxito y original eliminado."
+    else
+        echo "Error: El archivo cifrado no es válido. No se eliminó el original." >&2
+        exit 1
+    fi
+fi
+
+gpgconf --kill gpg-agent

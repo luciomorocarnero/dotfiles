@@ -1,0 +1,47 @@
+#!/bin/bash
+set -euo pipefail
+
+if [ "$#" -ne 1 ]; then
+    echo "Uso: $0 <archivo.gpg>" >&2
+    exit 1
+fi
+
+CIFRADO="$1"
+
+if [[ "$CIFRADO" != *.gpg ]]; then
+    echo "Error: El archivo debe tener extensión .gpg" >&2
+    exit 1
+fi
+
+if [ ! -f "$CIFRADO" ]; then
+    echo "Error: El archivo '$CIFRADO' no existe." >&2
+    exit 1
+fi
+
+# Detectar si es un contenedor de directorio (.tar.gz.gpg o .tgz.gpg)
+if [[ "$CIFRADO" == *.tar.gz.gpg ]] || [[ "$CIFRADO" == *.tgz.gpg ]]; then
+    echo "Descifrando y extrayendo directorio..."
+
+    # Descifra y descomprime al vuelo enviando la salida de gpg directamente a tar
+    if gpg --decrypt "$CIFRADO" | tar -xzf -; then
+        rm -f "$CIFRADO"
+        echo "Directorio descifrado y extraído con éxito."
+    else
+        echo "Error al descifrar o descomprimir el directorio." >&2
+        exit 1
+    fi
+
+else
+    # Descifrado de archivo individual
+    DESCIFRADO="${CIFRADO%.gpg}"
+
+    if gpg --output "$DESCIFRADO" --decrypt "$CIFRADO"; then
+        rm -f "$CIFRADO"
+        echo "Archivo descifrado con éxito: $DESCIFRADO"
+    else
+        echo "Error al descifrar el archivo." >&2
+        exit 1
+    fi
+fi
+
+gpgconf --kill gpg-agent
