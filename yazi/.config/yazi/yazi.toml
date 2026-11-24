@@ -1,3 +1,17 @@
 [mgr]
 sort_sensitive = false
 show_hidden = true
+
+[opener]
+fx = [
+  { run = 'setsid -f firefox %s', for = "unix" },
+]
+mpv = [
+  { run = 'mpv %s', for = "unix" },
+]
+
+[open]
+rules = [
+	{ url = "*.pdf", use = "fx" },
+	{ url = "*.mp4", use = "mpv" }
+]

@@ -61,6 +61,7 @@
       "activated": "",
       "deactivated": ""
     }
+    // "on-click": ""
   },
   "custom/network_warp": {
     "format": "{}",

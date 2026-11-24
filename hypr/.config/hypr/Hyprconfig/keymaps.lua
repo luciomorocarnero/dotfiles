@@ -207,7 +207,7 @@ hl.gesture({
 
 -- GROUPS
 hl.bind(keys(mainMod, "G"), hl.dsp.group.toggle())
-hl.bind(keys(mainMod, "SHIFT", "G"),hl.dsp.group.lock_active({action = "toggle"}) )
+hl.bind(keys(mainMod, "SHIFT", "G"),hl.dsp.group.lock({action = "toggle"}) )
 local group_direction = {
 	{ key = "L", forward = true },
 	{ key = "J", forward = true },

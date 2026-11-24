@@ -31,16 +31,15 @@ hl.workspace_rule({
 	layout = "master",
 })
 
+
 hl.workspace_rule({
 	workspace = "special:notes",
-	on_created_empty = "kitty --working-directory ~/Notes/ -e nvim ~/Notes/fast.md",
 	gaps_out = 150,
 })
-
+--
 hl.workspace_rule({
 	workspace = "special:stats",
 	layout = "master",
-	on_created_empty = "kitty -e btm & sleep 0.2 && (kitty -e wiremix & sleep 0.2 && kitty -e bluetui & sleep 0.2 && kitty -e impala)",
 })
 
 local suppressMaximizeRule = hl.window_rule({
@@ -68,9 +67,9 @@ hl.window_rule({
 })
 
 hl.window_rule({
-  name = "disable group animation In/Out",
-  animation = "popin 100%",
-  match = {
-    group = true
-  }
+	name = "disable group animation In/Out",
+	animation = "popin 100%",
+	match = {
+		group = true,
+	},
 })

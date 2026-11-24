@@ -75,7 +75,13 @@ alias c=" clear"
 alias mount-ubuntu=' sudo mount /dev/nvme0n1p4 /mnt/ubuntu'
 alias Ss="pacman -Ss"
 alias Qs="pacman -Qs"
-alias S="sudo pacman -S"
+function calc() {
+  local dir="~/.venvs/calculator/"
+  ~/.venvs/calculator/venv/bin/python ~/.venvs/calculator/main.py
+  # cd ~/.venvs/calculator
+  # source ~/.venvs/calculator/venv/bin/activate
+  # python ./main.py
+}
 
 
 # Yazi file manager with directory changing
@@ -142,6 +148,18 @@ bindkey '^Xl' clear-screen-and-scrollback
 autoload -Uz edit-command-line
 zle -N edit-command-line
 bindkey '^Xe' edit-command-line
+
+
+function checkupdates() {
+  sudo pacman -Sy
+  pacman -Qu
+
+  read "answer?Update packages? [Y/n]: "
+
+  if [[ -z "$answer" || "$answer" =~ ^[Yy]$ ]]; then
+    sudo pacman -Su
+  fi
+}
 
 # POWERLEVEL10k
 source /usr/share/zsh-theme-powerlevel10k/powerlevel10k.zsh-theme
